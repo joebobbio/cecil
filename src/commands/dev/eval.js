@@ -1,72 +1,39 @@
+const { DiscordAPIError } = require("discord.js");
 const { Command, Embed } = require("../../../lib");
-const Interpreter = require("js-interpreter");
 
 module.exports =
     class extends Command {
         constructor(...args) {
             super(...args, {
-                name: "eval",
+                name: "ev",
                 type: "dev",
                 description: "Eval js.",
                 usage: "<command to reload>",
-                aliases: ["ev", "e"],
+                aliases: ["eval"],
                 saying: "N/A.",
                 cooldown: 0
             });
         }
 
-        interpreter = new Interpreter('');
-
-        init() {
-            this.interpreter.setProperty(console, 'log', interpreter.createNativeFunction(null)));
-        }
-
-        main(msg) {
-            if (!this.client.config.owners.has(msg.author.id) || msg.author.id === "745058406083198994") {
+        async main(msg) {
+            let fuckoffEmbed = new Embed() 
+                .setTitle("Error")
+                .setDescription(`<@!${msg.author.id}>, you don't have the permission to use this command!`)
+                .setColor("RED")
+ 
+            
+            if (!this.client.config.owners.has(msg.author.id)) return msg.send(fuckoffEmbed); 
                 
-                
-                this.interpreter.appendCode(msg.params.join(" "));
+            let raw;
 
-                try {
-                    this.interpreter.run();
-                } catch (e) {
-                    const evalEmbed = new Embed()
-                    .setTitle("Eval")
-                    .addFields(
-                        { name: "Input", value: `\`\`\`js\n${msg.params.join(" ")}\`\`\`` },
-                        { name: "Output", value: `\`\`\`sh\n${e}\`\`\`` }
-                    );
-                    
-                    return msg.send(evalEmbed)
-                }
-
-                const evalEmbed = new Embed()
-                    .setTitle("Eval")
-                    .addFields(
-                        { name: "Input", value: `\`\`\`js\n${msg.params.join(" ")}\`\`\`` },
-                        { name: "Output", value: `\`\`\`sh\n${this.interpreter.value}\`\`\`` }
-                    );
-
-                msg.send(evalEmbed);
-            } else {
-                let raw;
-
-                try {
-                    raw = eval(msg.params.join(" "));
-                } catch (err) {
-                    raw = err;
-                }
-
-                const output = require("util").inspect(raw);
-
-                const evalEmbed = new Embed()
-                    .setTitle("Eval")
-                    .addFields(
-                        { name: "Input", value: `\`\`\`js\n${msg.params.join(" ")}\`\`\``.toString() },
-                        { name: "Output", value: `\`\`\`sh\n${output}\`\`\``, code: "bash"}
-                    );
-
-                msg.send(evalEmbed);
+            try {
+                raw = eval(msg.params.join(" ").replace(/process\.env/g, ""));
+            } catch (err) {
+                raw = err;
             }
+
+            const output = require("util").inspect(raw).replace(this.client.token, "[redacted]").console.log(`${msg.author} (${msg.author.id} tried to grab the token! Consider blacklisting them.)`);
+            msg.send(`PLEASE remove this from your production environment!`)
+            msg.send(output, { code: "bash", split: true });
         }
     };
