@@ -24,7 +24,7 @@ module.exports =
                     },
                     {
                         name: "Server", value: `
-                        [Mr.Grape Community](${this.client.config.serverInvite})`,
+                        [Cecil Community](${this.client.config.serverInvite})`,
                         inline: true
                     }
                 );
