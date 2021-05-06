@@ -27,4 +27,4 @@ You will need to get API keys from:
 
 ## Self hosting
 
-TODO: how to guide on self hosting
+TODO: how to guide on self hosting (wiki?)
