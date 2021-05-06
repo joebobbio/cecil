@@ -15,7 +15,7 @@ module.exports =
             if (message.content === this.client.mention) {
                 const helloEmbed = new Embed()
                     .setTitle("Hello!")
-                    .addField("Sup. I'm Mr. Grape", `**To get started, type ${message.prefix}help, or you can ping me!**`);
+                    .addField("Hey there, I'm Cecil.", `**To get started, type ${message.prefix}help, or you can ping me!**`);
                 message.send(helloEmbed);
             }
 
@@ -59,27 +59,9 @@ module.exports =
             } catch (err) {
                 console.log(err);
                 
-                message.send(`Can't run ${command.name} due to a bug.`.toString());
-                message.send`Do you want to report this bug to the developers?`;
+                message.send`Uh oh, I couldn't run that command! Please try again.`;
+                message.send`If the issue persists, consider reporting this with ${message.prefix}bug.`;
 
-                const verification = await msg.channel.awaitMessages(m => m.author.id === msg.author.id, { max: 1, time: 3500 });
-
-                const response = verification.first().content.toLowerCase();
-
-                if (response === "yes" || response === "y") {
-                    const channel = await this.client.channels.fetch(this.client.config.defaultChannels.bugs);
-
-                    const bugEmbed = new Embed()
-                        .setTitle("Bug Report")
-                        .setThumbnail(msg.author.displayAvatarURL({ dynamic: true }))
-                        .addFields(
-                            { name: "Author", value: `Username: ${msg.author.username}\nID: ${msg.author.id}`, inline: true },
-                            { name: "Guild", value: msg.guild.name, inline: true },
-                            { name: "Bug", value: `${command.name}` }
-                        );
-
-                    channel.send(bugEmbed);
-                }
 
                 this.client.emit("commandError", command.name, err);
             }
