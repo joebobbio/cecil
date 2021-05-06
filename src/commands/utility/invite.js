@@ -6,7 +6,7 @@ module.exports =
             super(...args, {
                 name: "invite",
                 type: "utility",
-                description: "Invite link for Mr.Grape.",
+                description: "Invite link for Cecil.",
                 usage: "No arguments required",
                 saying: "I just gave it to you!",
                 cooldown: 2
