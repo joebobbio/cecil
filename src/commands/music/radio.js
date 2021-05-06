@@ -38,7 +38,6 @@ module.exports =
             if (selections.length >= 2) {
                 const selectionEmbed = new Embed()
                 .setTitle("Selection")
-                //.setFooter("Mr Grape Records")
                 .addFields(
                     { name: "Which station do you want?", value: `${selections?.map(station => `${station?.callsign} *${station?.country}${station?.city != null ? `, ${station?.city}` : ''}*`).join('\n')}`, inline: true },
                 );
@@ -64,7 +63,6 @@ module.exports =
                 .setTitle("Radio")
                 .setDescription(metadata.description)
                 .setThumbnail(metadata.square_logo_large)
-                //.setFooter("Mr Grape Records")
                 .addFields(
                     { name: "Live", value: `[Listen here](${metadata.listen_live_url})`, inline: true },
                     { name: "Website", value: `[View here](${metadata.website})`, inline: true }
