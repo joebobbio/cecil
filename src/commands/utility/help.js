@@ -1,5 +1,7 @@
 const { Command, Embed } = require("../../../lib");
-//const checkmark = "✅";
+const checkmark = "✅";
+const badparam = "❌";
+
 module.exports =
     class extends Command {
         constructor(...args) {
@@ -20,23 +22,22 @@ module.exports =
 
         async main(msg) {
 
-            //await msg.react(checkmark);
             const aliases = {
                 "mod": "moderation",
                 "mus": "music",
                 "utils": "utility",
                 "util": "utility",
-                "eco": "economy"
             };
             const helpArg = msg.params[0]?.toLowerCase();
-            const categories = ["economy", "fun", "moderation", "music", "utility"];
+            const categories = ["fun", "moderation", "music", "utility"];
 
             if (!helpArg) {
+		msg.react(checkmark);
                 const helpEmbed = new Embed()
                     .setTitle("Help")
                     .addFields(
                         { name: "Categories", value: categories.map(e => this.toProper(e)).join("\n") },
-                        { name: "Additional Info", value: "For help on a command or category, [command|category]." }
+                        { name: "Additional Info", value: "For help on a command or category, use `c!help [command|category].`" }
                     );
                 return msg.send(helpEmbed);
             }
@@ -46,14 +47,15 @@ module.exports =
                 const commands = [...this.client.commands.values()]
                     .filter(c => c.type === category)
                     .map(c => `\`${c.name}\``).join(", ");
-
+		msg.react(checkmark);
                 const helpEmbed = new Embed()
                     .setTitle("Help")
-                    .addField(`Commands in the ${this.toProper(category)} Category!`, `> ${commands}`);
+                    .addField(`Commands in the ${this.toProper(category)} Category`, `> ${commands}`);
                 return msg.send(helpEmbed);
             }
             else if (this.client.commands.has(helpArg)) {
                 const command = this.client.commands.get(helpArg);
+		msg.react(checkmark);
                 const commandEmbed = new Embed()
                     .setTitle(this.toProper(command.name))
                     .setDescription(command.description)
@@ -64,6 +66,9 @@ module.exports =
                     );
                 return msg.send(commandEmbed);
             }
-            else msg.send("That's not a valid command or category!");
+            else {
+	msg.react(badparam);
+	 msg.send("That's not a valid command or category!");
+	}
         }
     };
