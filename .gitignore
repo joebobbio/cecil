@@ -3,4 +3,3 @@
 node_modules
 save
 *.env
-*.env-example
