@@ -5,11 +5,11 @@ module.exports =
         constructor(...args) {
             super(...args, {
                 name: "permissions",
-                type: "dev",
+                type: "utility",
                 description: "Check user permissions",
                 usage: "No arguments",
                 aliases: ["perms"],
-                saying: null,
+                saying: "I don't think your permissions have changed yet.",
                 cooldown: 5
             });
         }
