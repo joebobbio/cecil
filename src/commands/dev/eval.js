@@ -18,7 +18,7 @@ module.exports =
         async main(msg) {
             let fuckoffEmbed = new Embed() 
                 .setTitle("Error")
-                .setDescription(`<@!${msg.author.id}>, you don't have the permission to use this command!`)
+                .setDescription(`<@!${msg.author.id}>, you don't have permission to use this command!`)
                 .setColor("RED")
  
             

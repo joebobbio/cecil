@@ -29,7 +29,12 @@ module.exports =
         }
 
         main(msg) {
-            if (!this.client.config.owners.has(msg.author.id)) return msg.send("Back off! Devs only!");
+            let fuckoffEmbed = new Embed()
+        .setTitle("Error")
+        .setDescription(`<@!${msg.author.id}>, you don't have permission to use this command!`)
+        .setColor("RED")
+
+        if(!this.client.config.owners.has(msg.author.id)) return msg.send(fuckoffEmbed);
             if (msg.params[0] === "all") this.reloadAll();
             else {
                 const commands = this.getCommands(msg.params);
