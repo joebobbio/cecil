@@ -7,11 +7,11 @@ module.exports =
             super(...args, {
                 name: "radio",
                 type: "music",
-                aliases: ["r"],
-                description: "Listen to the radio!",
-                usage: "Type in the radio station to listen or the genre to search.",
+                aliases: ["iradio"],
+                description: "Live internet radio. Fetches from [Audacy](https://audacy.com).",
+                usage: "<frequency> FM",
                 cooldown: 2,
-                saying: "Calm down on the listening",
+                saying: "shh.. you'll get the FCC on us.",
             });
         }
 
