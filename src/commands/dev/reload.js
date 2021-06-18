@@ -1,4 +1,4 @@
-const { Command } = require("../../../lib");
+const { Command, Embed } = require("../../../lib");
 
 module.exports =
     class extends Command {
