@@ -24,5 +24,6 @@ module.exports = {
     bronze: "<:bronze:776581702318424134>",
     kelite: ":question:",
     limeinite: ":question:",
-    starbait: "<:starbait:826145854313463828>"
+    starbait: "<:starbait:826145854313463828>",
+    done: "<:yes:846518074424819753>"
 };
