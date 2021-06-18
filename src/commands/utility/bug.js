@@ -17,8 +17,8 @@ module.exports =
         async main(msg) {
             const bug = msg.params.join(" ");
 
-            if (bug.length < 15) return msg.send("Your bug is too short.");
-            else if (bug.length > 1800) return msg.send("Your bug report is wayyy too long. Tone it down.");
+            if (bug.length < 15) return msg.send("Your bug is too short. It has to be at least 15 characters long.");
+            else if (bug.length > 1800) return msg.send("Your bug report is too long. It must be shorter than 1800 characters.");
 
             const channel = await this.client.channels.fetch(this.client.config.defaultChannels.bugs);
 
