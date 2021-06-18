@@ -9,7 +9,7 @@ module.exports =
                 description: "See a person's avatar.",
                 usage: "<optional user>",
                 aliases: ["pfp"],
-                saying: "I just showed it to you!.",
+                saying: "I just showed it to you!",
                 cooldown: 2
             });
         }
