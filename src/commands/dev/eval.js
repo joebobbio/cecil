@@ -32,7 +32,7 @@ module.exports =
                 raw = err;
             }
 
-            const output = require("util").inspect(raw).replace(this.client.token, "[redacted]").console.log(`${msg.author} (${msg.author.id} tried to grab the token! Consider blacklisting them.)`);
+            const output = require("util").inspect(raw).replace(this.client.token, "[redacted]")
             msg.send(`PLEASE remove this from your production environment!`)
             msg.send(output, { code: "bash", split: true });
         }
