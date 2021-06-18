@@ -18,7 +18,7 @@ module.exports =
         async main(msg) {
             const number = +msg.params[0];
 
-            if (!number) return msg.send("Bruh give me a valid number of messages to purge.");
+            if (!number) return msg.send("No messages chosen to purge.");
 
             const [iterations, leftover] = [~~(number / 100), number % 100];
 
