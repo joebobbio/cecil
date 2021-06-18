@@ -10,7 +10,7 @@ module.exports =
                 type: "utility",
                 description: "Get help on commands.",
                 usage: "If you're reading this, you've figured it out already.",
-                aliases: ["assistance"],
+                aliases: ["h"],
                 saying: "Don't spam help command.",
                 cooldown: 2
             });
