@@ -25,7 +25,7 @@ module.exports =
                     { name: "Channels", value: msg.guild.channels.cache.size, inline: true },
                     { name: "Emojis", value: msg.guild.emojis.cache.size, inline: true },
                     { name: "Created", value: new Date(msg.guild.createdAt).toLocaleString(), inline: true },
-                    { name: "Region", value: msg.guild.region, inline: true },
+                    { name: "Region", value: `[N/A](https://support.discord.com/hc/en-us/articles/360060570993)`, inline: true },
                     { name: "ID", value: msg.guild.id, inline: true }
                 );
             msg.send(guildEmbed);

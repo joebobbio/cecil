@@ -24,7 +24,7 @@ module.exports =
                     },
                     {
                         name: "Server", value: `
-                        [Cecil Community](${this.client.config.serverInvite})`,
+                        Cecil Community`,
                         inline: true
                     }
                 );
