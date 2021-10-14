@@ -33,7 +33,6 @@ module.exports =
             }
 
             const output = require("util").inspect(raw).replace(this.client.token, "[redacted]")
-            msg.send(`PLEASE remove this from your production environment!`)
             msg.send(output, { code: "bash", split: true });
         }
     };
