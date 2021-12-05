@@ -1,11 +1,14 @@
 <div align="center">
 	<h1>Cecil</h1>
+	</div>
 	<p>An advanced moderation bot for Discord. Based on <a href="https://github.com/kinglalu/Mr.Grape">Mr. Grape.</a><p>
 <!-- The Discord server isn't ready yet. --!>
 <!-- <p><a href="https://discord.gg/NSGmteyrmg" align="center">
 <img alt="Discord" src="https://img.shields.io/discord/837596157256925184">
 </a></p>
 </div> --!>
+
+# This bot is deprecated. There will be no more updates or support, and the main instance will be non-functional. Instructions on maintaining your own fork will be posted eventually.
 
 
 ## About
